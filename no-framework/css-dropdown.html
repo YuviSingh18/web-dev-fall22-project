@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Dropdown</title>
+
+    <style>
+        .navbar {
+            margin: 0;
+            background-color: green;
+            padding: 1px;
+        }
+        .navitem {
+            position: relative;
+            display: inline-block;
+            font-size: 30px;
+            padding-right: 20px;
+        }
+        .list {
+            background-color: lightgreen;
+            display: none;
+            position: absolute;
+        }
+        .list:hover {
+            cursor: pointer;
+        }
+        .navitem:hover .list {
+            display: block;
+        }
+        .navitem :hover {
+            background-color: lightgreen;
+        }
+        .list-item:hover {
+            background-color: aquamarine;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="navitem">
+                <span>File</span> 
+                <div class="list">
+                    <p class="list-item">New</p>
+                    <p class="list-item">Open</p>
+                    <p class="list-item">Save</p>
+                    <p class="list-item">Print</p>
+                    <p class="list-item">Close</p>
+                </div>
+            </li>
+            <li class="navitem">
+                <span>Edit</span>
+                <div class="list">
+                    <p class="list-item">Undo</p>
+                    <p class="list-item">Redo</p>
+                    <p class="list-item">Cut</p>
+                    <p class="list-item">Copy</p>
+                    <p class="list-item">Paste</p>
+                    <p class="list-item">Delete</p>
+                    <p class="list-item">Select All</p>
+                </div>
+            </li>
+            <li class="navitem">
+                <span>View</span>
+                <div class="list">
+                    <p class="list-item">Zoom in</p>
+                    <p class="list-item">Zoom out</p>
+                    <p class="list-item">Actual Size</p>
+                    <p class="list-item">Fit page</p>
+                    <p class="list-item">Fit Width</p>
+                    <p class="list-item">Fit Height</p>
+                    <p class="list-item">Rotate left</p>
+                    <p class="list-item">Rotate right</p>
+                    <p class="list-item">Full Screen</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
