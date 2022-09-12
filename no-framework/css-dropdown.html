@@ -7,77 +7,118 @@
     <title>CSS Dropdown</title>
 
     <style>
+        body {
+            background-color: beige;
+        }
         .navbar {
-            margin: 0;
+            margin: -10px;
+            margin-top: -15px;
             background-color: green;
-            padding: 1px;
+        }
+        .navitem :hover {
+            background-color: lightgreen;
         }
         .navitem {
+            margin-left: -30px;
             position: relative;
             display: inline-block;
-            font-size: 30px;
-            padding-right: 20px;
+            font-size: 20px;
+            padding-right: 30px;
+            width: 90px;
         }
         .list {
             background-color: lightgreen;
             display: none;
             position: absolute;
+            flex-direction: column;
+            width: 90px;
+            padding-left: 1px;
         }
-        .list:hover {
+        .list:hover .navitem{
             cursor: pointer;
         }
         .navitem:hover .list {
-            display: block;
+            display: flex;
         }
-        .navitem :hover {
-            background-color: lightgreen;
+        .list-item {
+            text-decoration: none;
+            text-decoration-color: black;
+            display: block;
+            position:relative;
+            margin: 0;
+            padding: 5px;
+            font-size: 15px;
         }
         .list-item:hover {
             background-color: aquamarine;
+        }
+        .container {
+            margin-top: 20px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        .content {
+            width: auto;
+            height: 100px;
+            background-color: white;
+            border-left: solid;
+            border-left-color: red;
+        }
+        h3 {
+            padding: 5px;
+            margin-left: 10px;
         }
     </style>
 
 </head>
 <body>
-    <div class="navbar">
+    <nav class="navbar">
         <ul>
             <li class="navitem">
-                <span>File</span> 
+                <div class="item"><strong>File</strong></div> 
                 <div class="list">
-                    <p class="list-item">New</p>
-                    <p class="list-item">Open</p>
-                    <p class="list-item">Save</p>
-                    <p class="list-item">Print</p>
-                    <p class="list-item">Close</p>
+                    <a href class="list-item">New</a>
+                    <a href class="list-item">Open</a>
+                    <a href class="list-item">Save</a>
+                    <a href class="list-item">Print</a>
+                    <a href class="list-item">Close</a>
                 </div>
             </li>
             <li class="navitem">
-                <span>Edit</span>
+                <div class="item"><strong>Edit</strong></div>                
                 <div class="list">
-                    <p class="list-item">Undo</p>
-                    <p class="list-item">Redo</p>
-                    <p class="list-item">Cut</p>
-                    <p class="list-item">Copy</p>
-                    <p class="list-item">Paste</p>
-                    <p class="list-item">Delete</p>
-                    <p class="list-item">Select All</p>
+                    <a href class="list-item">Undo</a>
+                    <a href class="list-item">Redo</a>
+                    <a href class="list-item">Cut</a>
+                    <a href class="list-item">Copy</a>
+                    <a href class="list-item">Paste</a>
+                    <a href class="list-item">Delete</a>
+                    <a href class="list-item">Select All</a>
                 </div>
             </li>
             <li class="navitem">
-                <span>View</span>
+                <div class="item"><strong>View</strong></div>
                 <div class="list">
-                    <p class="list-item">Zoom in</p>
-                    <p class="list-item">Zoom out</p>
-                    <p class="list-item">Actual Size</p>
-                    <p class="list-item">Fit page</p>
-                    <p class="list-item">Fit Width</p>
-                    <p class="list-item">Fit Height</p>
-                    <p class="list-item">Rotate left</p>
-                    <p class="list-item">Rotate right</p>
-                    <p class="list-item">Full Screen</p>
+                    <a href class="list-item">Zoom in</a>
+                    <a href class="list-item">Zoom out</a>
+                    <a href class="list-item">Actual Size</a>
+                    <a href class="list-item">Fit page</a>
+                    <a href class="list-item">Fit Width</a>
+                    <a href class="list-item">Fit Height</a>
+                    <a href class="list-item">Rotate left</a>
+                    <a href class="list-item">Rotate right</a>
+                    <a href class="list-item">Full Screen</a>
                 </div>
             </li>
         </ul>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <h3>Introduction</h3>
+        </div>
+        <div class="content">
+            <h3>Extra</h3>
+        </div>
     </div>
 </body>
 </html>
