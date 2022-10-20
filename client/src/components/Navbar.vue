@@ -1,73 +1,67 @@
 <script setup lang="ts">
-
+import LoginBadge from "./Login-badge.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
-    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io/">
-                <img src="https://bulma.io/images/bulma-logo-white.png" width="112" height="28">
-            </a>
+          <router-link to="/" class="navbar-item">
+            <div class="title logo has-text-white has-background-info p-2">Workouts</div>
+          </router-link>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
       
-        <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="https://bulma.io/">
-                Home
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <router-link to="/my-workouts" class="navbar-item">
+              My Workouts
+            </router-link>
+      
+            <router-link to="/all-workouts" class="navbar-item">
+              My Friends' Workouts
+            </router-link>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+                <router-link to="/users" class="navbar-item">
+                  Users
+                </router-link>
+                <a class="navbar-item">
+                  About
                 </a>
-        
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
-                        Docs
-                    </a>
-            
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                        Overview
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-                        Modifiers
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                        Columns
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                            Layout
-                        </a>
-                        <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                            Forms
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                        Elements
-                        </a>
-                        <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                            Components
-                        </a>
-                    </div>
-                </div>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
             </div>
+          </div>
       
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-light">
-                            <span class="icon"><i class="fab fa-twitter"></i></span>
-                            <strong>Tweet</strong>
-                        </a>
-                        <a class="button is-primary">
-                            <span class="icon"><i class="fa fa-download"></i></span>
-                            <strong>Download</strong>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          <div class="navbar-end">
+            <LoginBadge />
+          </div>
         </div>
-    </nav>
+      </nav>
 </template>
 
 
 
 <style scoped>
-
+    .logo {
+        border: 0px solid black;
+        border-radius: 5px;
+    }
 </style>
