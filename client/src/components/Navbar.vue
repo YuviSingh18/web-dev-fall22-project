@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import LoginBadge from "./Login-badge.vue";
 import { RouterLink } from "vue-router";
+
+let isActive = ref(false);
 </script>
 
 <template>
@@ -10,14 +13,14 @@ import { RouterLink } from "vue-router";
             <div class="title logo has-text-white has-background-info p-2">Workouts</div>
           </router-link>
       
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <a :class="{ 'is-active': isActive }" @click="isActive = !isActive" role="button" class="navbar-burger">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
       
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isActive }">
           <div class="navbar-start">
             <router-link to="/my-workouts" class="navbar-item">
               My Workouts
