@@ -4,6 +4,8 @@
 
     const fName = '';
     const lName = '';
+    const em = '';
+    const hd = '';
 </script>
 
 <template>
@@ -13,18 +15,30 @@
             <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="fName" placeholder="First Name" />
+                    <input class="input" type="text" v-model="fName" placeholder="First Name" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Last Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="lName" placeholder="Last Name" />
+                    <input class="input" type="text" v-model="lName" placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="text" v-model="em" placeholder="abc@xyz.com" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Handle</label>
+                <div class="control">
+                    <input class="input" type="text" v-model="hd" placeholder="handle" required>
                 </div>
             </div>
             <div class="field">
                 <div class="control center">
-                    <router-link to="/" class="button is-link" @click="session.users.push({firstName: fName, lastName: lName})">Sign up</router-link>
+                    <router-link to="/" class="button is-link" @click="session.users.push({firstName: fName, lastName: lName, email: em, handle: hd, isAdmin: false})">Sign up</router-link>
                 </div>
             </div>
         </div>
