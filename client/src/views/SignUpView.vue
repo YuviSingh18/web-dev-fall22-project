@@ -2,11 +2,11 @@
     import { RouterLink } from "vue-router";
     import session from "../stores/session";
 
-    const fName = '';
-    const lName = '';
-    const em = '';
-    const hd = '';
-    const url = '';
+    let fName = '';
+    let lName = '';
+    let em = '';
+    let hd = '';
+    let url = '';
 </script>
 
 <template>
