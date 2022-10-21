@@ -16,6 +16,7 @@ const data = reactive({
             workoutLocation: 'Fishkill, NY',  
             pictureUrl: 'https://cdnfiles.hdrcreme.com/27492/medium/a-walk-in-the-park-.jpg?1426816426',
             workoutType: 'Walking',
+            picUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/SSSidhu.jpg',
         }
     )
 
@@ -30,6 +31,7 @@ const data = reactive({
             workoutLocation: 'New Paltz, NY',  
             pictureUrl: 'https://www.rei.com/dam/content_team_080317_61569_mountain_biking_beginners_lg.jpg',
             workoutType: 'Biking',
+            picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         }
     )
 
@@ -44,6 +46,7 @@ const data = reactive({
             workoutLocation: 'Minnewaska State Park Preserve, NY',  
             pictureUrl: 'https://images.squarespace-cdn.com/content/v1/5b46c539f79392287e58d958/1539828931213-97XJ75GCJHPHMST6B7NB/Lake+Minnewaska+-+Minnewaska+State+Park+Reserve+New+York?format=1000w',
             workoutType: 'Hiking',
+            picUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/SSSidhu.jpg',
         }
     )
 
@@ -58,6 +61,7 @@ const data = reactive({
             workoutLocation: "Gold's Gym, Newburgh, NY",  
             pictureUrl: 'https://www.elitefts.com/wp/wp-content/uploads/2018/01/PicsArt_01-07-09.42.15-e1515677432273.jpg',
             workoutType: 'Weight Training',
+            picUrl: 'https://bulma.io/images/placeholders/128x128.png',
         }
     )
 
@@ -72,6 +76,7 @@ const data = reactive({
             workoutLocation: 'Dutchess Rail Trail, NY', 
             pictureUrl: 'https://townsquare.media/site/704/files/2020/04/dutchess-rail-trail.png',
             workoutType: 'Hiking',
+            picUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/SSSidhu.jpg',
         }
     )
 
@@ -86,6 +91,7 @@ const data = reactive({
             workoutLocation: 'New Paltz, NY',  
             pictureUrl: 'https://baltimorediary.typepad.com/.a/6a00d8341d75c753ef0120a611ca3c970c-pi',
             workoutType: 'Swimming',
+            picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         }
     )
 
@@ -100,6 +106,7 @@ const data = reactive({
             workoutLocation: "Gold's Gym, Fishkill, NY",  
             pictureUrl: 'https://i.ytimg.com/vi/kSpjb4Zj7KE/maxresdefault.jpg',
             workoutType: 'Weight Training',
+            picUrl: 'https://bulma.io/images/placeholders/128x128.png',
         }
     )
 
@@ -114,6 +121,7 @@ const data = reactive({
             workoutLocation: 'New Paltz, NY',  
             pictureUrl: 'https://cdn.shopify.com/s/files/1/0018/8009/6838/files/ollie_8a8b4de1-dd7e-4667-b65a-d2fd07b221e0.png?v=1540868477',
             workoutType: 'Skating',
+            picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         }
     )
 
@@ -132,6 +140,7 @@ export class Workout {
     public workoutLocation?: string;
     public pictureUrl?: string;
     public workoutType?: string;
+    public picUrl?: string;
 }
 
 export default data;

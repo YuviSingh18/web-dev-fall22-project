@@ -6,6 +6,7 @@
     const lName = '';
     const em = '';
     const hd = '';
+    const url = '';
 </script>
 
 <template>
@@ -37,8 +38,14 @@
                 </div>
             </div>
             <div class="field">
+                <label class="label">Picture url</label>
+                <div class="control">
+                    <input class="input" type="text" v-model="url" placeholder="url" required>
+                </div>
+            </div>
+            <div class="field">
                 <div class="control center">
-                    <router-link to="/" class="button is-link" @click="session.users.push({firstName: fName, lastName: lName, email: em, handle: hd, isAdmin: false})">Sign up</router-link>
+                    <router-link to="/" class="button is-link" @click="session.users.push({firstName: fName, lastName: lName, email: em, handle: hd, isAdmin: false, picUrl: url})">Sign up</router-link>
                 </div>
             </div>
         </div>

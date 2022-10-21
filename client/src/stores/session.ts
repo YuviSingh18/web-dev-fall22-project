@@ -6,6 +6,7 @@ const session = reactive({
 });
 
 session.users.push({
+    picUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/SSSidhu.jpg',
     firstName: 'Yuvraj',
     lastName: 'Singh',
     email: 'singhy2@newpaltz.edu',
@@ -14,6 +15,7 @@ session.users.push({
 })
 
 session.users.push({
+    picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
     firstName: 'Moshe',
     lastName: 'Plotkin',
     email: 'plotkinm@newpaltz.edu',
@@ -22,6 +24,7 @@ session.users.push({
 })
 
 session.users.push({
+    picUrl: 'https://bulma.io/images/placeholders/128x128.png',
     firstName: 'Rishabh',
     lastName: 'Patel',
     email: 'patelr5@newpaltz.edu',
@@ -37,11 +40,17 @@ export function login(firstName: string, lastName: string) {
     }
 }
 
+export function deleteUser(user: User) {
+    const index = session.users.indexOf(user);
+    session.users.splice(index, 1);
+}
+
 export function logout() {
     session.user = null;
 }
 
 export class User {
+    public picUrl?: string;
     public firstName?: string;
     public lastName?: string;
     public email?: string;

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bulma": "0.9.4",
+    "@fortawesome/fontawesome-free": "5.15.4",
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"

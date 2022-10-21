@@ -61,7 +61,7 @@
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" @click="data.workouts.push({firstName: session.user?.firstName, lastName: session.user?.lastName, handle: session.user?.handle, title: head as string, workoutDate: date as string, workoutDuration: Duration as string, workoutLocation: Location as string, pictureUrl: Url as string, workoutType: Type as string}); isActive=false; head = '';date = '';Location = '';Url = '';Duration = '';Type = '';">Add Workout</button>
+                    <button class="button is-success" @click="data.workouts.push({firstName: session.user?.firstName, lastName: session.user?.lastName, handle: session.user?.handle, title: head as string, workoutDate: date as string, workoutDuration: Duration as string, workoutLocation: Location as string, pictureUrl: Url as string, workoutType: Type as string, picUrl: session.user?.picUrl}); isActive=false; head = '';date = '';Location = '';Url = '';Duration = '';Type = '';">Add Workout</button>
                     <button class="button" @click="isActive=false">Cancel</button>
                 </footer>
             </div>
@@ -71,7 +71,7 @@
                 <div class="media">
                     <figure class="media-left">
                         <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                            <img :src="workout.picUrl">
                         </p>
                     </figure>
                     <div class="media-content">
