@@ -24,7 +24,7 @@ session.users.push({
 })
 
 session.users.push({
-    picUrl: 'https://bulma.io/images/placeholders/128x128.png',
+    picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdMlP1v5ba8fZbMiZsl2UvKnykXf78ogFHIQ&usqp=CAU',
     firstName: 'Rishabh',
     lastName: 'Patel',
     email: 'patelr5@newpaltz.edu',

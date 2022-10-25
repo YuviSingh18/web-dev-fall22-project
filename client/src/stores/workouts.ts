@@ -61,7 +61,7 @@ const data = reactive({
             workoutLocation: "Gold's Gym, Newburgh, NY",  
             pictureUrl: 'https://www.elitefts.com/wp/wp-content/uploads/2018/01/PicsArt_01-07-09.42.15-e1515677432273.jpg',
             workoutType: 'Weight Training',
-            picUrl: 'https://bulma.io/images/placeholders/128x128.png',
+            picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdMlP1v5ba8fZbMiZsl2UvKnykXf78ogFHIQ&usqp=CAU',
         }
     )
 
@@ -106,7 +106,7 @@ const data = reactive({
             workoutLocation: "Gold's Gym, Fishkill, NY",  
             pictureUrl: 'https://i.ytimg.com/vi/kSpjb4Zj7KE/maxresdefault.jpg',
             workoutType: 'Weight Training',
-            picUrl: 'https://bulma.io/images/placeholders/128x128.png',
+            picUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdMlP1v5ba8fZbMiZsl2UvKnykXf78ogFHIQ&usqp=CAU',
         }
     )
 
