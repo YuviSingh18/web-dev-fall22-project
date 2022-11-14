@@ -87,7 +87,7 @@ const data = reactive({
             handle: 'Jewpaltz',
             title: 'Swam through the gunk',
             workoutDate: '09-18-2022',
-            workoutDuration: '30 mintes',
+            workoutDuration: '30 minutes',
             workoutLocation: 'New Paltz, NY',  
             pictureUrl: 'https://baltimorediary.typepad.com/.a/6a00d8341d75c753ef0120a611ca3c970c-pi',
             workoutType: 'Swimming',
