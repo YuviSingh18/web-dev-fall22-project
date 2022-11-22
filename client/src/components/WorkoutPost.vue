@@ -1,8 +1,11 @@
 <script setup lang="ts">
-    import { Workout, deleteWorkout } from "../stores/workouts";
+    import { type Workout, deleteWorkout } from "../stores/workouts";
 
     const props = defineProps({
-        workout: Workout,
+        workout: {
+            type: Workout,
+            required: true,
+        },
     });
 </script>
 
