@@ -35,7 +35,7 @@
     
     <div class="column" v-else>
         <AddWorkoutPopUp />
-        <div v-for="workout in workouts" :key="workout.id">
+        <div v-for="workout in workouts">
             <div v-if="props.pageType == 'my-workouts'">
                 <div v-if="workout.firstName == session.user.firstName && workout.lastName == session.user.lastName">
                     <br>
@@ -71,7 +71,7 @@
                             </nav>
                         </div>
                         <div class="media-right">
-                            <button class="delete" @click="(deleteWorkout(workout.id))"></button>
+                            <button class="delete" @click="reload();deleteWorkout(workout.id);"></button>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         </nav>
                     </div>
                     <div class="media-right">
-                        <router-link class="delete" :to="`/${props.pageType}`" @click="deleteWorkout(workout.id)">X</router-link>
+                        <button class="delete" @click="deleteWorkout(workout.id); reload();"></button>
                     </div>
                 </div>
             </div>

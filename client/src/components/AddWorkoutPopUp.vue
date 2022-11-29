@@ -8,7 +8,8 @@
     const workouts = reactive([] as Workout[]);
     getWorkouts().then( x => workouts.push(...x.workouts));
 
-    workout.id = workouts[workouts.length - 1].id + 1;
+    console.log('workouts', workouts);
+    workout.id = 0;
     workout.firstName = session.user?.firstName as string;
     workout.lastName = session.user?.lastName as string;
     workout.handle = session.user?.handle as string;
@@ -32,43 +33,44 @@
                     <div class="field">
                         <label class="label">Title</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="head">
+                            <input class="input" type="text" v-model="workout.title">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Date</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="date">
+                            <input class="input" type="text" v-model="workout.workoutDate">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Duration</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="Duration">
+                            <input class="input" type="text" v-model="workout.workoutDuration">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Location</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="l">
+                            <input class="input" type="text" v-model="workout.workoutLocation">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Picture Url</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="Url">
+                            <input class="input" type="text" v-model="workout.pictureUrl">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Workout Type</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="Type">
+                            <input class="input" type="text" v-model="workout.workoutType">
                         </div>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" @click="(workout.workoutDate = date as string, workout.workoutDuration = Duration as string, workout.workoutLocation = l as string, workout.pictureUrl = Url as string, workout.workoutType = Type as string, isActive=false, head = '', date = '', l = '',Url = '',Duration = '',Type = '',addWorkout(workout))">Add Workout</button>
+                    <button class="button is-success" @click="addWorkout(workout)">Add Workout</button>
                     <button class="button" @click="isActive=false">Cancel</button>
+                    <div>{{ workout }}</div>
                 </footer>
             </div>
         </div>

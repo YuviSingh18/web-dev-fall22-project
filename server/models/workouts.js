@@ -19,5 +19,6 @@ function addWorkout(workout) {
 module.exports = {
     getWorkouts,
     getWorkout,
-    deleteWorkout
+    deleteWorkout,
+    addWorkout
 };
