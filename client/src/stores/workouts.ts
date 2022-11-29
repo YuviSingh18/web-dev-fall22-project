@@ -1,15 +1,15 @@
-import myFetch from "@/services/myFetch";
+import { api } from "./session";
 
 export function getWorkouts() {
-    return myFetch<ListEnvelope<Workout>>("/workouts");
+    return api<ListEnvelope<Workout>>("/workouts");
 }
 
 export function getWorkout(id: number) {
-    return myFetch<Workout>(`/workouts/${id}`);
+    return api<Workout>(`/workouts/${id}`);
 }
 
 export function deleteWorkout(id: number) {
-    data.workouts = data.workouts.filter( (workout) => workout.id !== id);
+    return api<Workout>(`/workouts/delete/${id}`, null, "DELETE");
 }
 
 export interface ListEnvelope<T> {
@@ -19,6 +19,7 @@ export interface ListEnvelope<T> {
     limit: number;
 }
 export interface Workout {
+    id: number;
     firstName: string;
     lastName: string;
     handle: string;

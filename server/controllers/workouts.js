@@ -17,6 +17,12 @@ app
         } else {
             res.status(200).send(workout);
         }
+    })
+
+    .get('/delete/:id', (req, res) => {
+        
+        workouts.deleteWorkout(+req.params.id);
+        res.status(200).send('Workout deleted');
     });
 
 module.exports = app;

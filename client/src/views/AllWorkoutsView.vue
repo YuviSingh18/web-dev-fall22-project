@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <WorkoutDisplay pageType = 'friends-workouts' />
+  <WorkoutDisplay pageType = 'all-workouts' />
 </template>
 
 <style scoped>
