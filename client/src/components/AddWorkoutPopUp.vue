@@ -1,10 +1,21 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref,reactive } from 'vue';
     import session from "../stores/session";
-    // import data from "../stores/workouts";
+    import {type Workout, getWorkouts, addWorkout } from "../stores/workouts";
     
+    let workout = reactive({} as Workout);
+    
+    const workouts = reactive([] as Workout[]);
+    getWorkouts().then( x => workouts.push(...x.workouts));
+
+    workout.id = workouts[workouts.length - 1].id + 1;
+    workout.firstName = session.user?.firstName as string;
+    workout.lastName = session.user?.lastName as string;
+    workout.handle = session.user?.handle as string;
+    workout.picUrl = session.user?.picUrl as string;
+
     let isActive = ref(false);
-    let head = '';let date = '';let Location = '';let Url = '';let Duration = '';let Type = '';
+    let head = '';let date = '';let l = '';let Url = '';let Duration = '';let Type = '';
 </script>
 
 <template>
@@ -39,7 +50,7 @@
                     <div class="field">
                         <label class="label">Location</label>
                         <div class="control">
-                            <input class="input" type="text" v-model="Location">
+                            <input class="input" type="text" v-model="l">
                         </div>
                     </div>
                     <div class="field">
@@ -56,7 +67,7 @@
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <!-- <button class="button is-success" @click="data.workouts.push({firstName: session.user?.firstName, lastName: session.user?.lastName, handle: session.user?.handle, title: head as string, workoutDate: date as string, workoutDuration: Duration as string, workoutLocation: Location as string, pictureUrl: Url as string, workoutType: Type as string, picUrl: session.user?.picUrl}); isActive=false; head = '';date = '';Location = '';Url = '';Duration = '';Type = '';">Add Workout</button> -->
+                    <button class="button is-success" @click="(workout.workoutDate = date as string, workout.workoutDuration = Duration as string, workout.workoutLocation = l as string, workout.pictureUrl = Url as string, workout.workoutType = Type as string, isActive=false, head = '', date = '', l = '',Url = '',Duration = '',Type = '',addWorkout(workout))">Add Workout</button>
                     <button class="button" @click="isActive=false">Cancel</button>
                 </footer>
             </div>

@@ -9,7 +9,11 @@ export function getWorkout(id: number) {
 }
 
 export function deleteWorkout(id: number) {
-    return api<Workout>(`/workouts/delete/${id}`, null, "DELETE");
+    return api<Workout>(`/workouts/${id}`, null, "DELETE");
+}
+
+export function addWorkout(workout: Workout) {
+    return api<Workout>("/workouts", workout);
 }
 
 export interface ListEnvelope<T> {

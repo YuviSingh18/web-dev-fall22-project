@@ -12,6 +12,10 @@ function deleteWorkout(id) {
     data.workouts = data.workouts.filter(workout => workout.id !== id);
 }
 
+function addWorkout(workout) {
+    data.workouts.push(workout);
+}
+
 module.exports = {
     getWorkouts,
     getWorkout,

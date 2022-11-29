@@ -19,10 +19,14 @@ app
         }
     })
 
-    .get('/delete/:id', (req, res) => {
-        
+    .delete('/:id', (req, res) => {
         workouts.deleteWorkout(+req.params.id);
-        res.status(200).send('Workout deleted');
+        res.status(204).send();
+    })
+
+    .post('/', (req, res) => {
+        workouts.addWorkout(req.body);
+        res.status(201).send();
     });
 
 module.exports = app;

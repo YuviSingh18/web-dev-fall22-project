@@ -71,7 +71,7 @@
                             </nav>
                         </div>
                         <div class="media-right">
-                            <button class="delete" @click="deleteWorkout(workout.id)"></button>
+                            <button class="delete" @click="(deleteWorkout(workout.id))"></button>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         </nav>
                     </div>
                     <div class="media-right">
-                        <router-link class="delete" :to="`/${props.pageType}`" @click="deleteWorkout(workout.id), reload()">X</router-link>
+                        <router-link class="delete" :to="`/${props.pageType}`" @click="deleteWorkout(workout.id)">X</router-link>
                     </div>
                 </div>
             </div>
