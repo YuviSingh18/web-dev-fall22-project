@@ -6,9 +6,8 @@
     let workout = reactive({} as Workout);
     
     const workouts = reactive([] as Workout[]);
-    getWorkouts().then( x => workouts.push(...x.workouts));
+    getWorkouts().then( x => workouts.push(...x));
 
-    console.log('workouts', workouts);
     workout.id = 0;
     workout.firstName = session.user?.firstName as string;
     workout.lastName = session.user?.lastName as string;

@@ -12,21 +12,20 @@
     });
 
     const workouts = reactive([] as Workout[]);
-    getWorkouts().then( x => workouts.push(...x.workouts));
+    get();
 
     function reload() {
         workouts.splice(0, workouts.length);
-        getWorkouts().then( x => workouts.push(...x.workouts));
+        get();
     }
-
-    let isActive = ref(false);
-    let head = '';let date = '';let Location = '';let Url = '';let Duration = '';let Type = '';
+    function get() {
+        getWorkouts().then( x => workouts.push(...x));
+    }
 
     
 </script>
 
 <template>
-    
     <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>
     <h1 class="title" v-else>Friend's Workouts</h1>
     <div v-if="session.user == null">

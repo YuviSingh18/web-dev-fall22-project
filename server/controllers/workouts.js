@@ -3,6 +3,9 @@ const workouts = require('../models/workouts');
 
 const app = express.Router();
 
+app.use(express.json());
+app.use(express.urlencoded());
+
 app 
     .get('/', (req, res, next) => {
         workouts.getWorkouts()
@@ -27,8 +30,14 @@ app
     })
 
     .post('/', (req, res) => {
-        workouts.addWorkout(req.body);
-        res.status(201).send();
+        const newService = req.body;
+        console.log(req.method, req.url, newService);
+        try {
+            workouts.addWorkout(newService);
+            res.status(200).json("Added");
+        } catch (err) {
+            res.status(500).json(err);
+    }
     });
 
 module.exports = app;

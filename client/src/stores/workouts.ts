@@ -1,7 +1,7 @@
 import { api } from "./session";
 
 export function getWorkouts() {
-    return api<ListEnvelope<Workout>>("/workouts");
+    return api<Workout[]>("/workouts");
 }
 
 export function getWorkout(id: number) {
@@ -17,6 +17,8 @@ export function addWorkout(workout: Workout) {
 }
 
 export interface ListEnvelope<T> {
+results: any;
+[x: string]: any;
     workouts: T[];
     total: number;
     skip: number;
