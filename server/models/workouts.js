@@ -1,22 +1,35 @@
 const data = require('../data/workouts.json');
+const { connect } = require('./mongo');
 
-function getWorkouts() {
+async function collection() {
+    const client = await connect();
+    return client.db('Fitness').collection('workouts');
+}
+
+async function getWorkouts() {
+    const db = await collection();
+    const data = await db.find().toArray();
     return data;
 }
 
-function getWorkout(id) {
-    return data.workouts.find(workout => workout.id === id);
+async function getWorkout(id) {
+    const db = await collection();
+    const data = await db.findOne({ id: id });
+    return data;
 }
 
-function deleteWorkout(id) {
-    data.workouts = data.workouts.filter(workout => workout.id !== id);
+async function deleteWorkout(id) {
+    const db = await collection();
+    await db.deleteOne({ id: id });
 }
 
-function addWorkout(workout) {
-    data.workouts.push(workout);
+async function addWorkout(workout) {
+    const db = await collection();
+    await db.insertOne(workout);
 }
 
 module.exports = {
+    collection,
     getWorkouts,
     getWorkout,
     deleteWorkout,

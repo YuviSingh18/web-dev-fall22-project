@@ -4,19 +4,21 @@ const workouts = require('../models/workouts');
 const app = express.Router();
 
 app 
-    .get('/', (req, res) => {
-        res.status(200).send(workouts.getWorkouts());
+    .get('/', (req, res, next) => {
+        workouts.getWorkouts()
+        .then(x=> res.status(200).send(x))
+        .catch(next);
     })
 
     .get('/:id', (req, res) => {
-
-        const workout = workouts.getWorkout(+req.params.id);
-
-        if (!workout) {
-            res.status(404).send('Workout not found');
-        } else {
-            res.status(200).send(workout);
-        }
+        workouts.getWorkout(+req.params.id)
+        .then(workout => {
+            if (workout) {
+                res.status(200).send(workout);
+            } else {
+                res.status(404).send({ error: 'Workout not found' });
+            }
+        })
     })
 
     .delete('/:id', (req, res) => {
