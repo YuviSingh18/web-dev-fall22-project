@@ -25,8 +25,8 @@ app
     })
 
     .delete('/:id', (req, res) => {
-        workouts.deleteWorkout(+req.params.id);
-        res.status(204).send();
+        workouts.deleteWorkout(+req.params.id)
+        .then(() => res.sendStatus(204))
     })
 
     .post('/', (req, res) => {

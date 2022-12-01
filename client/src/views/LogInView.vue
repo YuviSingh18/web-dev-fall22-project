@@ -4,6 +4,15 @@
     import session from "../stores/session";
     import { login } from "../stores/session";
     let Name = reactive({firstName: '', lastName: ''});
+
+    function Login() {
+        if(Name.firstName == '' || Name.lastName == '') {
+            alert("Please fill out all fields");
+            window.location.href = "/log-in";
+        } else {
+            login(Name.firstName, Name.lastName);
+        }
+    }
 </script>
 
 <template>
@@ -25,7 +34,7 @@
             <span class="has-text-right has-text-gray">*If information matches Log in button will appear. Otherwire, sign up first</span>
                     <div class="field">
                         <div class="control center">
-                            <router-link to="/" class="button is-link" @click="login(Name.firstName, Name.lastName)">Log in</router-link>
+                            <router-link to="/" class="button is-link" @click="Login()">Log in</router-link>
                         </div>
                     </div>
         </div>

@@ -1,12 +1,22 @@
 <script setup lang="ts">
     import { RouterLink } from "vue-router";
+    import { ref, reactive } from 'vue';
     import session from "../stores/session";
+    import { type User, addUser, getUsers } from "../stores/users";
 
-    let fName = '';
-    let lName = '';
-    let em = '';
-    let hd = '';
-    let url = '';
+    const user = reactive({} as User);
+
+    function signup() {
+        getUsers().then( x => user.userId = x[x.length-1].userId + 1);
+        user.isAdmin = false;
+        if(user.firstName == undefined || user.lastName == undefined || user.handle == undefined || user.picUrl == undefined || user.email == undefined) {
+            alert("Please fill out all fields");
+        } else {
+            addUser(user);
+            alert("Account created!");
+            window.location.href = "/";
+        }
+    }
 </script>
 
 <template>
@@ -16,36 +26,36 @@
             <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="fName" placeholder="First Name" required>
+                    <input class="input" type="text" v-model="user.firstName" placeholder="First Name" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Last Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="lName" placeholder="Last Name" required>
+                    <input class="input" type="text" v-model="user.lastName" placeholder="Last Name" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="em" placeholder="abc@xyz.com" required>
+                    <input class="input" type="text" v-model="user.email" placeholder="abc@xyz.com" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Handle</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="hd" placeholder="handle" required>
+                    <input class="input" type="text" v-model="user.handle" placeholder="handle" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Picture url</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="url" placeholder="url" required>
+                    <input class="input" type="text" v-model="user.picUrl" placeholder="url" required>
                 </div>
             </div>
             <div class="field">
                 <div class="control center">
-                    <router-link to="/" class="button is-link" @click="session.users.push({firstName: fName, lastName: lName, email: em, handle: hd, isAdmin: false, picUrl: url})">Sign up</router-link>
+                    <button class="button is-link" @click="signup()">Sign up</button>
                 </div>
             </div>
         </div>

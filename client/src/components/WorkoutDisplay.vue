@@ -43,9 +43,7 @@
 
 <template>
     <div v-if="isLoading" class="loading">
-        <div class="loading__spinner">
-            Hello
-        </div>
+        <button class="button is-loading is-large is-info"></button>
     </div>
     <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>
     <h1 class="title" v-else>Friend's Workouts</h1>
@@ -199,5 +197,13 @@
     background-color: lightcyan;
     width: 60%;
     margin-left: 20%;
+    margin-top: 5%;
+}
+
+.is-loading {
+    background-color: lightcyan;
+    width: 40%;
+    padding: 100px;
+    margin-left: 30%;
 }
 </style>

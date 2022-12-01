@@ -10,8 +10,9 @@ export function getWorkout(id: number) {
 }
 
 export function deleteWorkout(id: number) {
-    api<Workout>(`/workouts/${id}`, null, "DELETE");
-    session.messages.push({ type: 'success', text: 'Workout Deleted'});
+    return api(`/workouts/${id}`, null, "DELETE").then(() => {
+        session.messages.push({ type: 'success', text: 'Workout Deleted'});
+    });
 }
 
 export function addWorkout(workout: Workout) {

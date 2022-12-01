@@ -8,11 +8,5 @@ export default function myFetch<T>(url: string, data: any = null, method?: strin
         },
         body: data ? JSON.stringify(data) : undefined,
     };
-    return fetch(API_ROOT + url, options).then((response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error(response.statusText);
-        }
-    });
+    return fetch(API_ROOT + url, options).then( x => x.json());
 }
