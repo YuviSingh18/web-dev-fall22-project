@@ -23,15 +23,11 @@
                 </div>
             </div>
             <span class="has-text-right has-text-gray">*If information matches Log in button will appear. Otherwire, sign up first</span>
-            <div v-for="user in session.users">
-                <div v-if="user.firstName == Name.firstName && user.lastName == Name.lastName">
                     <div class="field">
                         <div class="control center">
                             <router-link to="/" class="button is-link" @click="login(Name.firstName, Name.lastName)">Log in</router-link>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
 </template>

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-    import session, { deleteUser } from "../stores/session";
+    import { ref, reactive } from 'vue';
+    import session from "../stores/session";
+    import { type User, getUsers, deleteUser } from "../stores/users";
+
+    const users = reactive([] as User[]);
+    getUsers().then( x => users.push(...x));
 </script>
 
 <template>
@@ -25,14 +30,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in session.users">
+                    <tr v-for="user in users">
                         <td><img :src="user.picUrl" alt="user picture" width="50" height="50"></td>
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.handle }}</td>
                         <td>{{ user.isAdmin }}</td>
-                        <td><button class="button is-danger" @click="deleteUser(user)">Delete</button></td>
+                        <td><button class="button is-danger" @click="deleteUser(user.userId)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>

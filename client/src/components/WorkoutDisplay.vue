@@ -7,6 +7,8 @@
     import { type Workout, deleteWorkout, addWorkout, getWorkout } from "../stores/workouts";
 
 
+    console.log(session.user)
+
     const props = defineProps({
         pageType: String,
     });
@@ -47,7 +49,7 @@
     </div>
     <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>
     <h1 class="title" v-else>Friend's Workouts</h1>
-    <div v-if="session.user == null">
+    <div v-if="(session.loginUserId == 0)">
         <p>You are not logged in. <RouterLink to="/log-in">Log in</RouterLink> to see your workouts.</p>
     </div>
     
@@ -108,7 +110,7 @@
         </div>
         <div v-for="workout in workouts">
             <div v-if="props.pageType == 'my-workouts'">
-                <div v-if="workout.firstName == session.user.firstName && workout.lastName == session.user.lastName">
+                <div v-if="workout.firstName == session.user?.firstName && workout.lastName == session.user.lastName">
                     <br>
                     <div class="media">
                         <figure class="media-left">

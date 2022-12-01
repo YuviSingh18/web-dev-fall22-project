@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 const workoutsController = require('./controllers/workouts');
+const usersController = require('./controllers/users');
 
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
@@ -23,7 +24,9 @@ app
 .get('/error', (req, res) => {
     sss.PORT();
 })
-.use('/api/v1/workouts', workoutsController);
+
+.use('/api/v1/workouts', workoutsController)
+.use('/api/v1/users', usersController);
 
 app.get('*', (req, res) => {
     

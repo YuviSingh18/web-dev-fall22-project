@@ -8,7 +8,7 @@
 
 <template>
     <div class="navbar-item">
-        <div class="buttons" v-if="session.user == null">
+        <div class="buttons" v-if="(session.user == null)">
             <router-link to="/sign-up" class="button is-info">
                 <strong>Sign up</strong>
             </router-link>

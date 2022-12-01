@@ -104,5 +104,34 @@
             "workoutType": "Skating",
             "picUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU"
         }
+    ],
+    "users": [
+        {
+        "picUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/SSSidhu.jpg",
+        "firstName": "Yuvraj",
+        "lastName": "Singh",
+        "email": "singhy2@newpaltz.edu",
+        "handle": "YuviSingh",
+        "isAdmin": true
+      },
+      {
+        "picUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU",
+        "firstName": "Moshe",
+        "lastName": "Plotkin",
+        "email": "plotkinm@newpaltz.edu",
+        "handle": "Jewpaltz",
+        "isAdmin": false
+      },
+      {
+        "picUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdMlP1v5ba8fZbMiZsl2UvKnykXf78ogFHIQ&usqp=CAU",
+        "firstName": "Rishabh",
+        "lastName": "Patel",
+        "email": "patelr5@newpaltz.edu",
+        "handle": "Rishbah",
+        "isAdmin": false
+      }
     ]
 }
+
+    
+  
