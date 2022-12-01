@@ -67,7 +67,7 @@
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" @click="addWorkout(workout)">Add Workout</button>
+                    <button class="button is-success" @click="(addWorkout(workout), workouts.push(workout), isActive=false)">Add Workout</button>
                     <button class="button" @click="isActive=false">Cancel</button>
                     <div>{{ workout }}</div>
                 </footer>
