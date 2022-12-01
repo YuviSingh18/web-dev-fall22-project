@@ -42,7 +42,7 @@
 <template>
     <div v-if="isLoading" class="loading">
         <div class="loading__spinner">
-            
+            Hello
         </div>
     </div>
     <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>

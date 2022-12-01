@@ -22,7 +22,7 @@ export async function api<T>(url: string, data: any = null, method?: string ){
     try {
         return await myFetch<T>(url, data, method);
     } catch (error) {
-        setError(error as string);
+        //setError(error as string);
     }finally{
         session.loading--;
     }

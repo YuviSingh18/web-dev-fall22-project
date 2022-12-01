@@ -1,3 +1,4 @@
+import session from "./session";
 import { api } from "./session";
 
 export function getWorkouts() {
@@ -9,11 +10,13 @@ export function getWorkout(id: number) {
 }
 
 export function deleteWorkout(id: number) {
-    return api<Workout>(`/workouts/${id}`, null, "DELETE");
+    api<Workout>(`/workouts/${id}`, null, "DELETE");
+    session.messages.push({ type: 'success', text: 'Workout Deleted'});
 }
 
 export function addWorkout(workout: Workout) {
-    return api<Workout>("/workouts", workout);
+    api<Workout>("/workouts", workout)
+    session.messages.push({ type: 'success', text: 'Workout added'});
 }
 
 export interface ListEnvelope<T> {

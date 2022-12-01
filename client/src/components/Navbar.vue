@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import LoginBadge from "./Login-badge.vue";
 import { RouterLink } from "vue-router";
+import MessageList from './MessageList.vue';
 
 let isActive = ref(false);
 </script>
@@ -54,6 +55,7 @@ let isActive = ref(false);
           </div>
       
           <div class="navbar-end">
+            <MessageList />
             <LoginBadge />
           </div>
         </div>
