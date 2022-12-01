@@ -1,9 +1,9 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue';
     import session from "../stores/session";
+    import { isLoading } from '../stores/session';
     import { RouterLink } from "vue-router";
     import { getWorkouts } from "../stores/workouts";
-    import AddWorkoutPopUp from "./AddWorkoutPopUp.vue";
     import { type Workout, deleteWorkout, addWorkout, getWorkout } from "../stores/workouts";
 
 
@@ -40,6 +40,11 @@
 </script>
 
 <template>
+    <div v-if="isLoading" class="loading">
+        <div class="loading__spinner">
+            
+        </div>
+    </div>
     <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>
     <h1 class="title" v-else>Friend's Workouts</h1>
     <div v-if="session.user == null">
@@ -96,7 +101,7 @@
                     </section>
                     <footer class="modal-card-foot">
                         <button class="button is-success" @click="(isActive=false, reload2())">Add Workout</button>
-                        <button class="button" @click="isActive=false">Cancel</button>
+                        <button class="button" :class="{ 'is-loading': isLoading }" @click="isActive=false">Cancel</button>
                     </footer>
                 </div>
             </div>
@@ -137,7 +142,7 @@
                             </nav>
                         </div>
                         <div class="media-right">
-                            <button class="delete" @click="reload(workout.id);deleteWorkout(workout.id);"></button>
+                            <button class="delete" :class="{ 'is-loading': isLoading }" @click="reload(workout.id);deleteWorkout(workout.id);"></button>
                         </div>
                     </div>
                 </div>
@@ -176,7 +181,7 @@
                         </nav>
                     </div>
                     <div class="media-right">
-                        <button class="delete" @click="deleteWorkout(workout.id); reload(workout.id);"></button>
+                        <button class="delete" :class="{ 'is-loading': isLoading }" @click="deleteWorkout(workout.id); reload(workout.id);"></button>
                     </div>
                 </div>
             </div>

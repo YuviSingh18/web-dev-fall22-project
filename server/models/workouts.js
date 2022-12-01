@@ -9,7 +9,6 @@ async function collection() {
 async function getWorkouts() {
     const db = await collection();
     const data = await db.find().toArray();
-    console.log('Punjabi');
     return data;
 }
 

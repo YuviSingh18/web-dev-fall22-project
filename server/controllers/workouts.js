@@ -31,7 +31,6 @@ app
 
     .post('/', (req, res) => {
         const newService = req.body;
-        console.log(req.method, req.url, newService);
         try {
             workouts.addWorkout(newService);
             res.status(200).json("Added");
