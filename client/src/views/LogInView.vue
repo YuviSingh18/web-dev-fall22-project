@@ -31,12 +31,11 @@
                     <input class="input" type="text" v-model="Name.lastName" placeholder="Last Name" />
                 </div>
             </div>
-            <span class="has-text-right has-text-gray">*If information matches Log in button will appear. Otherwire, sign up first</span>
-                    <div class="field">
-                        <div class="control center">
-                            <router-link to="/" class="button is-link" @click="Login()">Log in</router-link>
-                        </div>
-                    </div>
+            <div class="field">
+                <div class="control center">
+                    <router-link to="/" class="button is-link" @click="Login()">Log in</router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>

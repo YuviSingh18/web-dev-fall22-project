@@ -25,8 +25,9 @@ app
     })
 
     .delete('/:id', (req, res) => {
-        users.deleteUser(+req.params.id);
-        res.status(204).send();
+        console.log(+req.params.id);
+        users.deleteUser(+req.params.id)
+            .then(() => res.status(200).send({ success: 'User deleted' }))
     })
 
     .post('/', (req, res) => {
@@ -46,6 +47,12 @@ app
         } catch (err) {
             res.status(500).json(err);
         }
+    })
+
+    .patch('/:id', (req, res) => {
+        const user = req.body;
+        users.updateUser(+req.params.id, user)
+            .then(() => res.status(200).send({ success: 'User updated' }))
     })
     
 

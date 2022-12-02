@@ -6,15 +6,15 @@
 
     const user = reactive({} as User);
 
-    function signup() {
-        getUsers().then( x => user.userId = x[x.length-1].userId + 1);
+    async function signup() {
+        await getUsers().then( x => user.userId = x[x.length-1].userId + 1);
         user.isAdmin = false;
         if(user.firstName == undefined || user.lastName == undefined || user.handle == undefined || user.picUrl == undefined || user.email == undefined) {
             alert("Please fill out all fields");
+            window.location.href = "/sign-up";
         } else {
             addUser(user);
             alert("Account created!");
-            window.location.href = "/";
         }
     }
 </script>
@@ -55,7 +55,7 @@
             </div>
             <div class="field">
                 <div class="control center">
-                    <button class="button is-link" @click="signup()">Sign up</button>
+                    <router-link to="/" class="button is-link" @click="signup()">Sign up</router-link>
                 </div>
             </div>
         </div>

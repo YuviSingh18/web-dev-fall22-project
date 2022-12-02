@@ -10,13 +10,19 @@ export function getUser(id: number) {
 }
 
 export function deleteUser(id: number) {
-    api<User>(`/users/${id}`, null, "DELETE");
-    session.messages.push({ type: 'success', text: 'User Deleted'});
+    return api(`/users/${id}`, null, "DELETE").then(() => {
+        session.messages.push({ type: 'success', text: 'User Deleted'});
+    });
 }
 
 export function addUser(user: User) {
     api<User>("/users", user)
     session.messages.push({ type: 'success', text: 'User added'});
+}
+
+export function updateUser(user: User) {
+    api<User>(`/users/${user.userId}`, user, "PATCH")
+    session.messages.push({ type: 'success', text: 'User updated'});
 }
 
 export interface User {

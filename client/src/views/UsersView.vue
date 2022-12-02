@@ -1,10 +1,27 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue';
     import session from "../stores/session";
-    import { type User, getUsers, deleteUser } from "../stores/users";
+    import { type User, getUsers, deleteUser, updateUser } from "../stores/users";
 
     const users = reactive([] as User[]);
     getUsers().then( x => users.push(...x));
+
+    function reload(id: number) {
+        users.splice(users.findIndex((user) => user.userId === id), 1);
+    }
+
+    function toggle(user: User) {
+        user.isAdmin = !user.isAdmin;
+        const user1 = {} as User;
+        user1.userId = user.userId;
+        user1.firstName = user.firstName;
+        user1.lastName = user.lastName;
+        user1.handle = user.handle;
+        user1.picUrl = user.picUrl;
+        user1.email = user.email;
+        user1.isAdmin = user.isAdmin;
+        updateUser(user1);
+    }
 </script>
 
 <template>
@@ -36,8 +53,11 @@
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.handle }}</td>
-                        <td>{{ user.isAdmin }}</td>
-                        <td><button class="button is-danger" @click="deleteUser(user.userId)">Delete</button></td>
+                        <td>
+                            <div v-if="user.isAdmin">True&nbsp;<a class="fas fa-toggle-on" @click="toggle(user)"></a></div>
+                            <div v-else>False&nbsp;<a class="fas fa-toggle-off" @click="toggle(user)"></a></div>
+                        </td>
+                        <td><button class="button is-danger" @click="(deleteUser(user.userId), reload(user.userId))">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
