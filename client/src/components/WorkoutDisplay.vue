@@ -3,9 +3,11 @@
     import session from "../stores/session";
     import { isLoading } from '../stores/session';
     import { RouterLink } from "vue-router";
-    import { getWorkouts } from "../stores/workouts";
-    import { type Workout, deleteWorkout, addWorkout, getWorkout, updateWorkout } from "../stores/workouts";
+    import { type Workout, deleteWorkout, addWorkout, getWorkouts, updateWorkout } from "../stores/workouts";
     import { type User, updateUser } from "../stores/users";
+    import EditWorkout from './EditWorkout.vue';
+
+    let editWorkout = reactive({} as Workout);
 
     const props = defineProps({
         pageType: String,
@@ -20,6 +22,7 @@
 
     let workout = reactive({} as Workout);
     let isActive = ref(false);
+    let isEdit = ref(false);
 
     getWorkouts().then( x => workout.id = x[x.length-1].id + 1);
     workout.firstName = session.user?.firstName as string;
@@ -71,6 +74,24 @@
         workout1.workoutType = workout.workoutType;
         workout1.numberOfLikes = workout.numberOfLikes;
         updateWorkout(workout1);
+    }
+
+    function update(workout: Workout) {
+        const workout1 = {} as Workout;
+        workout1.id = workout.id;
+        workout1.firstName = workout.firstName;
+        workout1.lastName = workout.lastName;
+        workout1.handle = workout.handle;
+        workout1.picUrl = workout.picUrl;
+        workout1.title = workout.title;
+        workout1.workoutDate = workout.workoutDate;
+        workout1.workoutDuration = workout.workoutDuration;
+        workout1.workoutLocation = workout.workoutLocation;
+        workout1.pictureUrl = workout.pictureUrl;
+        workout1.workoutType = workout.workoutType;
+        workout1.numberOfLikes = workout.numberOfLikes;
+        updateWorkout(workout1);
+        editWorkout = {} as Workout;
     }
 </script>
 
@@ -140,6 +161,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div v-for="workout in workouts">
                 <div v-if="props.pageType == 'my-workouts'">
                     <div v-if="workout.firstName == session.user?.firstName && workout.lastName == session.user.lastName">
@@ -174,7 +197,14 @@
                                                 <i class="fas fa-heart" 
                                                     :class="{'red' : session.user?.likedPosts.includes(workout.id)}"
                                                     @click="toggleLike(workout)"></i>
-                                                &nbsp;{{ workout.numberOfLikes }}
+                                                    &nbsp;{{ workout.numberOfLikes }}
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="level-right">
+                                        <a class="level-item">
+                                            <span class="icon is-small" v-if="(session.user?.firstName == workout.firstName)">
+                                                <i class="fas fa-edit" @click="(editWorkout = workout, isEdit = true)"></i>
                                             </span>
                                         </a>
                                     </div>
@@ -214,17 +244,73 @@
                                         <span class="icon is-small"><i class="fas fa-retweet"></i></span>
                                     </a>
                                     <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-heart" :class="{'red' : session.user?.likedPosts.includes(workout.id)}">&nbsp;{{ workout.numberOfLikes }}</i></span>
+                                        <span class="icon is-small">
+                                            <i class="fas fa-heart" 
+                                                :class="{'red' : session.user?.likedPosts.includes(workout.id)}"
+                                                @click="toggleLike(workout)"></i>
+                                                &nbsp;{{ workout.numberOfLikes }}
+                                        </span>                                    
+                                    </a>
+                                </div>
+                                <div class="level-right">
+                                    <a class="level-item">
+                                        <span class="icon is-small" v-if="(session.user?.firstName == workout.firstName)">
+                                            <i class="fas fa-edit" @click="(editWorkout = workout, isEdit = true)"></i>
+                                        </span>
                                     </a>
                                 </div>
                             </nav>
                         </div>
                         <div class="media-right">
-                            <button class="delete" :class="{ 'is-loading': isLoading }" @click="deleteWorkout(workout.id); reload(workout.id);"></button>
+                            <div v-if="session.user?.firstName == workout.firstName"><button class="delete" :class="{ 'is-loading': isLoading }" @click="deleteWorkout(workout.id); reload(workout.id);"></button></div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div>
+                <div class="modal" :class="{ 'is-active': isEdit }">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Edit Workout</p>
+                            <button class="delete" aria-label="close" @click="isEdit=false"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <div class="media">
+                                <figure class="media-left">
+                                    <p class="image is-64x64">
+                                        <img :src="workout?.picUrl">
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>
+                                                {{ editWorkout.firstName }} {{ editWorkout?.lastName }}
+                                            </strong> 
+                                            <small>@{{ editWorkout?.handle }}</small> 
+                                            <small><input type="text" v-model="editWorkout.workoutDate"></small> 
+                                            <small><input type="text" v-model="editWorkout.workoutLocation"></small>
+                                            <br>
+                                            <input type="text" v-model="editWorkout.title">
+                                            <div class>
+                                                <img :src="editWorkout?.pictureUrl">
+                                                <input type="text" v-model="editWorkout.pictureUrl">
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button class="button is-success" @click="(isEdit=false, update(editWorkout))">Update Workout</button>
+                            <button class="button" :class="{ 'is-loading': isLoading }" @click="isEdit=false">Cancel</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     
