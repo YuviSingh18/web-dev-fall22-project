@@ -20,6 +20,11 @@ export function addWorkout(workout: Workout) {
     session.messages.push({ type: 'success', text: 'Workout added'});
 }
 
+export function updateWorkout(workout: Workout) {
+    api<Workout>(`/workouts/${workout.id}`, workout, "PATCH")
+    session.messages.push({ type: 'success', text: 'Workout updated'});
+}
+
 export interface ListEnvelope<T> {
 results: any;
 [x: string]: any;
@@ -40,4 +45,5 @@ export interface Workout {
     pictureUrl: string;
     workoutType: string;
     picUrl: string;
+    numberOfLikes: number;
 }

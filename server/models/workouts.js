@@ -28,10 +28,16 @@ async function addWorkout(workout) {
     await db.insertOne(workout);
 }
 
+async function updateWorkout(id, workout) {
+    const db = await collection();
+    await db.updateOne({ id: id }, { $set: workout });
+}
+
 module.exports = {
     collection,
     getWorkouts,
     getWorkout,
     deleteWorkout,
-    addWorkout
+    addWorkout,
+    updateWorkout
 };

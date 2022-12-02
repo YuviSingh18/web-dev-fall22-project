@@ -37,6 +37,12 @@ app
         } catch (err) {
             res.status(500).json(err);
     }
-    });
+    })
+
+    .patch('/:id', (req, res) => {
+        const workout = req.body;
+        workouts.updateWorkout(+req.params.id, workout)
+        .then(() => res.status(200).send({ success: 'Workout updated' }))
+    })
 
 module.exports = app;

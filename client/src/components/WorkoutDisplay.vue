@@ -4,7 +4,8 @@
     import { isLoading } from '../stores/session';
     import { RouterLink } from "vue-router";
     import { getWorkouts } from "../stores/workouts";
-    import { type Workout, deleteWorkout, addWorkout, getWorkout } from "../stores/workouts";
+    import { type Workout, deleteWorkout, addWorkout, getWorkout, updateWorkout } from "../stores/workouts";
+    import { type User, updateUser } from "../stores/users";
 
     const props = defineProps({
         pageType: String,
@@ -35,6 +36,41 @@
         workout.workoutLocation = '';
         workout.pictureUrl = '';
         workout.workoutType = '';
+    }
+
+    function toggleLike(workout: Workout) {
+        if(session.user?.likedPosts.includes(workout.id)) {
+            workout.numberOfLikes = workout.numberOfLikes - 1;
+            session.user?.likedPosts.splice(session.user?.likedPosts.indexOf(workout.id), 1);
+        } else {
+            workout.numberOfLikes = workout.numberOfLikes + 1;
+            session.user?.likedPosts.push(workout.id);
+        }
+        const user = session.user as User;
+        const user1 = {} as User;
+        user1.userId = user.userId;
+        user1.firstName = user.firstName;
+        user1.lastName = user.lastName;
+        user1.handle = user.handle;
+        user1.picUrl = user.picUrl;
+        user1.email = user.email;
+        user1.isAdmin = user.isAdmin;
+        user1.likedPosts = user.likedPosts;
+        updateUser(user1);
+        const workout1 = {} as Workout;
+        workout1.id = workout.id;
+        workout1.firstName = workout.firstName;
+        workout1.lastName = workout.lastName;
+        workout1.handle = workout.handle;
+        workout1.picUrl = workout.picUrl;
+        workout1.title = workout.title;
+        workout1.workoutDate = workout.workoutDate;
+        workout1.workoutDuration = workout.workoutDuration;
+        workout1.workoutLocation = workout.workoutLocation;
+        workout1.pictureUrl = workout.pictureUrl;
+        workout1.workoutType = workout.workoutType;
+        workout1.numberOfLikes = workout.numberOfLikes;
+        updateWorkout(workout1);
     }
 </script>
 
@@ -131,10 +167,15 @@
                                             <span class="icon is-small"><i class="fas fa-reply"></i></span>
                                         </a>
                                         <a class="level-item">
-                                            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                            <span class="icon is-small"><i class="fas fa-retweet"></i>&nbsp;</span>
                                         </a>
                                         <a class="level-item">
-                                            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                            <span class="icon is-small">
+                                                <i class="fas fa-heart" 
+                                                    :class="{'red' : session.user?.likedPosts.includes(workout.id)}"
+                                                    @click="toggleLike(workout)"></i>
+                                                &nbsp;{{ workout.numberOfLikes }}
+                                            </span>
                                         </a>
                                     </div>
                                 </nav>
@@ -173,7 +214,7 @@
                                         <span class="icon is-small"><i class="fas fa-retweet"></i></span>
                                     </a>
                                     <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                        <span class="icon is-small"><i class="fas fa-heart" :class="{'red' : session.user?.likedPosts.includes(workout.id)}">&nbsp;{{ workout.numberOfLikes }}</i></span>
                                     </a>
                                 </div>
                             </nav>
@@ -203,5 +244,9 @@
     padding: 100px;
     margin-left: 30%;
     margin-top: 5%;
+}
+
+.red {
+    color: red;
 }
 </style>

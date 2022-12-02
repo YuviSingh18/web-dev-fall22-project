@@ -33,4 +33,5 @@ export interface User {
     handle: string;
     isAdmin: boolean;
     picUrl: string;
+    likedPosts: number[];
 }

@@ -20,6 +20,7 @@
         user1.picUrl = user.picUrl;
         user1.email = user.email;
         user1.isAdmin = user.isAdmin;
+        user1.likedPosts = user.likedPosts;
         updateUser(user1);
     }
 </script>
