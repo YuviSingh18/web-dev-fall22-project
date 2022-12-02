@@ -5,7 +5,6 @@
     import { RouterLink } from "vue-router";
     import { type Workout, deleteWorkout, addWorkout, getWorkouts, updateWorkout } from "../stores/workouts";
     import { type User, updateUser } from "../stores/users";
-    import EditWorkout from './EditWorkout.vue';
 
     let editWorkout = reactive({} as Workout);
 
