@@ -16,7 +16,7 @@
         user1.userId = user.userId;
         user1.firstName = user.firstName;
         user1.lastName = user.lastName;
-        user1.handle = user.handle;
+        user1.username = user.username;
         user1.picUrl = user.picUrl;
         user1.email = user.email;
         user1.isAdmin = user.isAdmin;
@@ -53,7 +53,7 @@
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.email }}</td>
-                        <td>{{ user.handle }}</td>
+                        <td>{{ user.username }}</td>
                         <td>
                             <div v-if="user.isAdmin">True&nbsp;<a class="fas fa-toggle-on" @click="toggle(user)"></a></div>
                             <div v-else>False&nbsp;<a class="fas fa-toggle-off" @click="toggle(user)"></a></div>
