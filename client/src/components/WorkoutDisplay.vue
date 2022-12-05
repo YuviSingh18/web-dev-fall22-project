@@ -28,6 +28,7 @@
     workout.lastName = session.user?.lastName as string;
     workout.handle = session.user?.handle as string;
     workout.picUrl = session.user?.picUrl as string;
+    workout.userId = session.user?.userId as number;
 
     function reload2() {    
         addWorkout(workout);
@@ -61,6 +62,7 @@
         updateUser(user1);
         const workout1 = {} as Workout;
         workout1.id = workout.id;
+        workout1.userId = workout.userId;
         workout1.firstName = workout.firstName;
         workout1.lastName = workout.lastName;
         workout1.handle = workout.handle;
@@ -78,6 +80,7 @@
     function update(workout: Workout) {
         const workout1 = {} as Workout;
         workout1.id = workout.id;
+        workout1.userId = workout.userId;
         workout1.firstName = workout.firstName;
         workout1.lastName = workout.lastName;
         workout1.handle = workout.handle;
@@ -164,7 +167,7 @@
 
             <div v-for="workout in workouts">
                 <div v-if="props.pageType == 'my-workouts'">
-                    <div v-if="workout.firstName == session.user?.firstName && workout.lastName == session.user.lastName">
+                    <div v-if="workout.userId == session.user?.userId">
                         <br>
                         <div class="media">
                             <figure class="media-left">

@@ -35,6 +35,7 @@ results: any;
 }
 export interface Workout {
     id: number;
+    userId: number;
     firstName: string;
     lastName: string;
     handle: string;

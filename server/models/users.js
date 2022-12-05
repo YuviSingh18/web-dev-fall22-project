@@ -29,8 +29,7 @@ async function addUser(user) {
 
 async function updateUser(id, user) {
     const db = await collection();
-    await db
-        .updateOne({ userId: id }, { $set: user });
+    await db.updateOne({ userId: id }, { $set: user });
 }
 
 async function login(user) {

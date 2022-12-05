@@ -26,9 +26,19 @@
         </div>
         <div class="buttons" v-else>
             <div class="welcome"> Welcome {{ session.user.firstName }} {{ session.user.lastName }} </div>
-            <a class="button is-white" @click="logout()">
-                Log out
-            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="navbar-dropdown">
+                    <router-link to="/profile" class="navbar-item">
+                        Profile
+                    </router-link>
+                    <a class="navbar-item" @click="logout()">
+                        Log out
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </template>
