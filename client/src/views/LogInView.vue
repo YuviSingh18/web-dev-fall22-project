@@ -3,14 +3,14 @@
     import { RouterLink } from "vue-router";
     import session from "../stores/session";
     import { login } from "../stores/session";
-    let Name = reactive({firstName: '', lastName: ''});
+    let loginEntry = reactive({username: '', password: ''});
 
     function Login() {
-        if(Name.firstName == '' || Name.lastName == '') {
+        if(loginEntry.username == '' || loginEntry.password == '') {
             alert("Please fill out all fields");
             window.location.href = "/log-in";
         } else {
-            login(Name.firstName, Name.lastName);
+            login(loginEntry.username, loginEntry.password);
         }
     }
 </script>
@@ -20,15 +20,15 @@
         <h1 class="title">Log in</h1>
         <div class="box">
             <div class="field">
-                <label class="label">First Name</label>
+                <label class="label">Userame</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="Name.firstName" placeholder="First Name" />
+                    <input class="input" type="text" v-model="loginEntry.username" placeholder="Username" />
                 </div>
             </div>
             <div class="field">
-                <label class="label">Last Name</label>
+                <label class="label">Password</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="Name.lastName" placeholder="Last Name" />
+                    <input class="input" type="password" v-model="loginEntry.password" placeholder="Password" />
                 </div>
             </div>
             <div class="field">

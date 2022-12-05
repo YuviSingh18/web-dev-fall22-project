@@ -29,8 +29,9 @@ export interface User {
     userId: number;
     firstName: string;
     lastName: string;
+    password: string;
     email: string;
-    handle: string;
+    username: string;
     isAdmin: boolean;
     picUrl: string;
     likedPosts: number[];

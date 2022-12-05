@@ -38,7 +38,7 @@ export interface Workout {
     userId: number;
     firstName: string;
     lastName: string;
-    handle: string;
+    username: string;
     title: string;
     workoutDate: string;
     workoutDuration: string;

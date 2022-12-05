@@ -9,7 +9,7 @@
     async function signup() {
         await getUsers().then( x => user.userId = x[x.length-1].userId + 1);
         user.isAdmin = false;
-        if(user.firstName == undefined || user.lastName == undefined || user.handle == undefined || user.picUrl == undefined || user.email == undefined) {
+        if(user.firstName == undefined || user.lastName == undefined || user.username == undefined || user.password == undefined || user.picUrl == undefined || user.email == undefined) {
             alert("Please fill out all fields");
             window.location.href = "/sign-up";
         } else {
@@ -42,9 +42,15 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">Handle</label>
+                <label class="label">Username</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.handle" placeholder="handle" required>
+                    <input class="input" type="text" v-model="user.username" placeholder="username" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" v-model="user.password" placeholder="Password" required>
                 </div>
             </div>
             <div class="field">

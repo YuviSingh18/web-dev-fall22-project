@@ -13,7 +13,9 @@
     });
 
     const workouts = reactive([] as Workout[]);
-    getWorkouts().then( x => workouts.push(...x));
+    if(session.loginUserId !== 0) {
+        getWorkouts().then( x => workouts.push(...x));
+    }
 
     function reload(id: number) {
         workouts.splice(workouts.findIndex((workout) => workout.id === id), 1);
@@ -26,11 +28,12 @@
     getWorkouts().then( x => workout.id = x[x.length-1].id + 1);
     workout.firstName = session.user?.firstName as string;
     workout.lastName = session.user?.lastName as string;
-    workout.handle = session.user?.handle as string;
+    workout.username = session.user?.username as string;
     workout.picUrl = session.user?.picUrl as string;
     workout.userId = session.user?.userId as number;
+    workout.numberOfLikes = 0;
 
-    function reload2() {    
+    function add() {    
         addWorkout(workout);
         workouts.push(workout);
         workout.title = '';
@@ -54,7 +57,7 @@
         user1.userId = user.userId;
         user1.firstName = user.firstName;
         user1.lastName = user.lastName;
-        user1.handle = user.handle;
+        user1.username = user.username;
         user1.picUrl = user.picUrl;
         user1.email = user.email;
         user1.isAdmin = user.isAdmin;
@@ -65,7 +68,7 @@
         workout1.userId = workout.userId;
         workout1.firstName = workout.firstName;
         workout1.lastName = workout.lastName;
-        workout1.handle = workout.handle;
+        workout1.username = workout.username;
         workout1.picUrl = workout.picUrl;
         workout1.title = workout.title;
         workout1.workoutDate = workout.workoutDate;
@@ -83,7 +86,7 @@
         workout1.userId = workout.userId;
         workout1.firstName = workout.firstName;
         workout1.lastName = workout.lastName;
-        workout1.handle = workout.handle;
+        workout1.username = workout.username;
         workout1.picUrl = workout.picUrl;
         workout1.title = workout.title;
         workout1.workoutDate = workout.workoutDate;
@@ -157,7 +160,7 @@
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <button class="button is-success" @click="(isActive=false, reload2())">Add Workout</button>
+                            <button class="button is-success" @click="(isActive=false, add())">Add Workout</button>
                             <button class="button" :class="{ 'is-loading': isLoading }" @click="isActive=false">Cancel</button>
                         </footer>
                     </div>
@@ -178,7 +181,7 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <strong>{{ workout.firstName }} {{ workout?.lastName }}</strong> <small>@{{ workout?.handle }}</small> <small>{{ workout?.workoutDate }}</small> <small>{{ workout?.workoutLocation }}</small>
+                                        <strong>{{ workout.firstName }} {{ workout?.lastName }}</strong> <small>@{{ workout?.username }}</small> <small>{{ workout?.workoutDate }}</small> <small>{{ workout?.workoutLocation }}</small>
                                         <br>
                                         {{ workout?.title }}
                                         <div class>
@@ -229,7 +232,7 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong>{{ workout.firstName }} {{ workout?.lastName }}</strong> <small>@{{ workout?.handle }}</small> <small>{{ workout?.workoutDate }}</small> <small>{{ workout?.workoutLocation }}</small>
+                                    <strong>{{ workout.firstName }} {{ workout?.lastName }}</strong> <small>@{{ workout?.username }}</small> <small>{{ workout?.workoutDate }}</small> <small>{{ workout?.workoutLocation }}</small>
                                     <br>
                                     {{ workout?.title }}
                                     <div class>
@@ -291,7 +294,7 @@
                                             <strong>
                                                 {{ editWorkout.firstName }} {{ editWorkout?.lastName }}
                                             </strong> 
-                                            <small>@{{ editWorkout?.handle }}</small> 
+                                            <small>@{{ editWorkout?.username }}</small> 
                                             <small><input type="text" v-model="editWorkout.workoutDate"></small> 
                                             <small><input type="text" v-model="editWorkout.workoutLocation"></small>
                                             <br>

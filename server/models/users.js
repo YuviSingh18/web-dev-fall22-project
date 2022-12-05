@@ -34,7 +34,7 @@ async function updateUser(id, user) {
 
 async function login(user) {
     const db = await collection();
-    const data = await db.findOne({ firstName: user.firstName, lastName: user.lastName });
+    const data = await db.findOne({ username: user.username, password: user.password });
     if(data) {
         return data;
     } else {

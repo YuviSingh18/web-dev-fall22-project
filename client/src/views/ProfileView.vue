@@ -8,7 +8,7 @@ import { type Workout, getWorkouts, updateWorkout } from "../stores/workouts";
 let isEditFirstName = ref(false);
 let isEditLastName = ref(false);
 let isEditEmail = ref(false);
-let isEditHandle = ref(false);
+let isEditUsername = ref(false);
 let isEditPicture = ref(false);
 
 let firstName = reactive({
@@ -23,21 +23,23 @@ let email = reactive({
   value: session.user?.email,
   error: "",
 });
-let handle = reactive({
-  value: session.user?.handle,
+let username = reactive({
+  value: session.user?.username,
   error: "",
 });
 let picUrl = reactive({
   value: session.user?.picUrl,
   error: "",
 });
+const workouts = reactive([] as Workout[]);
 
-function update() {
+
+async function update() {
     let user = {} as User;
     user.userId = session.user?.userId as number;
     user.firstName = firstName.value as string;
     user.lastName = lastName.value as string;
-    user.handle = handle.value as string;
+    user.username = username.value as string;
     user.picUrl = picUrl.value as string;
     user.email = email.value as string;
     user.isAdmin = session.user?.isAdmin as boolean;
@@ -45,19 +47,16 @@ function update() {
     updateUser(user);
     session.user = user;
 
-    const workouts = [] as Workout[];
-    getWorkouts().then((x) => workouts.push(...x));
-    console.log(workouts);
+    await getWorkouts().then((x) => workouts.push(...x));
     for(let workout of workouts) {
-        console.log(workout.userId);
         if (workout.userId === session.user?.userId) {
             const workout1 = {} as Workout;
             workout1.id = workout.id;
             workout1.userId = workout.userId;
-            workout.firstName = firstName.value as string;
-            workout.lastName = lastName.value as string;
-            workout.handle = handle.value as string;
-            workout.picUrl = picUrl.value as string;
+            workout1.firstName = firstName.value as string;
+            workout1.lastName = lastName.value as string;
+            workout1.username = username.value as string;
+            workout1.picUrl = picUrl.value as string;
             workout1.title = workout.title;
             workout1.workoutDate = workout.workoutDate;
             workout1.workoutDuration = workout.workoutDuration;
@@ -90,7 +89,13 @@ function update() {
                             <div class="control">
                                 <input class="input" type="text" v-model="picUrl.value" v-if="isEditPicture">
                             </div>
-                            <a><i v-if="!isEditPicture" @click="(isEditPicture = true)" class="fas fa-edit"></i><button v-else class="submit" @click="(update(), isEditPicture=false)">Save</button></a>
+                            <a>
+                                <i v-if="!isEditPicture" @click="(isEditPicture = true)" class="fas fa-edit"></i>
+                                <div v-else>
+                                    <button class="button is-info is-small" @click="(update(), isEditPicture=false)">Save</button>
+                                    <button class="button is-white is-small" @click="(isEditPicture=false)">Cancel</button>
+                                </div>
+                            </a>
                         </figure>
                     </div>
                     <div class="column is-2"></div>
@@ -101,7 +106,13 @@ function update() {
                                 <input class="input" type="text" v-model="firstName.value" v-if="!isEditFirstName" disabled>
                                 <input class="input" type="text" v-model="firstName.value" v-else>
                             </div>
-                            <a @click="(isEditFirstName = !isEditFirstName)"><i v-if="!isEditFirstName" class="fas fa-edit"></i><button v-else @click="update()" class="submit">Save</button></a>
+                            <a>
+                                <i v-if="!isEditFirstName" @click="(isEditFirstName=true)" class="fas fa-edit"></i>
+                                <div v-else>
+                                    <button class="button is-info is-small" @click="(update(), isEditFirstName=false)">Save</button>
+                                    <button class="button is-white is-small" @click="(isEditFirstName=false)">Cancel</button>
+                                </div>                            
+                            </a>
                         </div>
                         <div class="field">
                             <label class="label">Last Name</label>
@@ -109,7 +120,13 @@ function update() {
                                 <input class="input" type="text" v-model="lastName.value" v-if="!isEditLastName" disabled>
                                 <input class="input" type="text" v-model="lastName.value" v-else>
                             </div>
-                            <a @click="(isEditLastName = !isEditLastName)"><i v-if="!isEditLastName" class="fas fa-edit"></i><button v-else @click="update()" class="submit">Save</button></a>
+                            <a>
+                                <i v-if="!isEditLastName" @click="(isEditLastName=true)" class="fas fa-edit"></i>
+                                <div v-else>
+                                    <button class="button is-info is-small" @click="(update(), isEditLastName=false)">Save</button>
+                                    <button class="button is-white is-small" @click="(isEditLastName=false)">Cancel</button>
+                                </div>                            
+                            </a>
                         </div>
                         <div class="field">
                             <label class="label">Email</label>
@@ -117,15 +134,27 @@ function update() {
                                 <input class="input" type="text" v-model="email.value" v-if="!isEditEmail" disabled>
                                 <input class="input" type="text" v-model="email.value" v-else>
                             </div>
-                            <a @click="(isEditEmail = !isEditEmail)"><i v-if="!isEditEmail" class="fas fa-edit"></i><button v-else @click="update()" class="submit">Save</button></a>
+                            <a>
+                                <i v-if="(isEditEmail == false)" @click="(isEditEmail = true)" class="fas fa-edit"></i>
+                                <div v-else>
+                                    <button class="button is-info is-small" @click="(update(), isEditEmail=false)">Save</button>
+                                    <button class="button is-white is-small" @click="(isEditEmail=false)">Cancel</button>
+                                </div>                            
+                            </a>
                         </div>
                         <div class="field">
-                            <label class="label">Handle</label>
+                            <label class="label">Username</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="handle.value" v-if="!isEditHandle" disabled>
-                                <input class="input" type="text" v-model="handle.value" v-else>
+                                <input class="input" type="text" v-model="username.value" v-if="!isEditUsername" disabled>
+                                <input class="input" type="text" v-model="username.value" v-else>
                             </div>
-                            <a @click="(isEditHandle = !isEditHandle)"><i v-if="!isEditHandle" class="fas fa-edit"></i><button v-else @click="update()" class="submit">Save</button></a>
+                            <a>
+                                <i v-if="!isEditUsername" @click="(isEditUsername = true)" class="fas fa-edit"></i>
+                                <div v-else>
+                                    <button class="button is-info is-small" @click="(update(), isEditUsername=false)">Save</button>
+                                    <button class="button is-white is-small" @click="(isEditUsername=false)">Cancel</button>
+                                </div>                            
+                            </a>
                         </div>
                     </div>
                 </div>

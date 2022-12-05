@@ -37,8 +37,8 @@ export async function api<T>(url: string, data: any = null, method?: string ){
     return {} as T;
 }
 
-export function login(firstName: string, lastName: string) {
-        api<User | boolean>("/users/login", { firstName, lastName })
+export function login(username: string, password: string) {
+        api<User | boolean>("/users/login", { username, password })
         .then( x => { 
             if(x === false){
                 setError("Login failed: user not found");
