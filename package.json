@@ -6,18 +6,18 @@
     "license": "ISC",
   
     "scripts": {
+      "build": "npm i -ws && npm run build -ws",
       "dev": "nodemon --watch server server/index.js",
-      "start": "node server/index.js",
-      "build": "npm i -ws && npm run build -ws"
+      "start": "node server/index.js"
     },
+    "workspaces": [
+      "client"
+    ],
     "dependencies": {
       "mongodb": "^4.12.1",
       "dotenv": "^16.0.3",
       "express": "^4.18.1"
     },
-    "workspaces": [
-      "client"
-    ],
     "devDependencies": {
       "nodemon": "^2.0.20"
     },
