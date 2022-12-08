@@ -89,6 +89,7 @@ async function update() {
                             <div class="control">
                                 <input class="input" type="text" v-model="picUrl.value" v-if="isEditPicture">
                             </div>
+                            <br>
                             <a>
                                 <i v-if="!isEditPicture" @click="(isEditPicture = true)" class="fas fa-edit"></i>
                                 <div v-else>
@@ -103,8 +104,8 @@ async function update() {
                         <div class="field">
                             <label class="label">First Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="firstName.value" v-if="!isEditFirstName" disabled>
-                                <input class="input" type="text" v-model="firstName.value" v-else>
+                                <div class="disabled input is-black" v-if="!isEditFirstName">{{firstName.value}}</div>
+                                <input class="input is-black" type="text" v-model="firstName.value" v-else>
                             </div>
                             <a>
                                 <i v-if="!isEditFirstName" @click="(isEditFirstName=true)" class="fas fa-edit"></i>
@@ -117,8 +118,8 @@ async function update() {
                         <div class="field">
                             <label class="label">Last Name</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="lastName.value" v-if="!isEditLastName" disabled>
-                                <input class="input" type="text" v-model="lastName.value" v-else>
+                                <div class="disabled input is-black" v-if="!isEditLastName">{{lastName.value}}</div>
+                                <input class="input is-black" type="text" v-model="lastName.value" v-else>
                             </div>
                             <a>
                                 <i v-if="!isEditLastName" @click="(isEditLastName=true)" class="fas fa-edit"></i>
@@ -131,8 +132,8 @@ async function update() {
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="email.value" v-if="!isEditEmail" disabled>
-                                <input class="input" type="text" v-model="email.value" v-else>
+                                <div class="disabled input is-black" v-if="!isEditEmail">{{email.value}}</div>
+                                <input class="input is-black" type="text" v-model="email.value" v-else>
                             </div>
                             <a>
                                 <i v-if="(isEditEmail == false)" @click="(isEditEmail = true)" class="fas fa-edit"></i>
@@ -145,8 +146,8 @@ async function update() {
                         <div class="field">
                             <label class="label">Username</label>
                             <div class="control">
-                                <input class="input" type="text" v-model="username.value" v-if="!isEditUsername" disabled>
-                                <input class="input" type="text" v-model="username.value" v-else>
+                                <div class="disabled input is-black" v-if="!isEditUsername">{{username.value}}</div>
+                                <input class="input is-black" type="text" v-model="username.value" v-else>
                             </div>
                             <a>
                                 <i v-if="!isEditUsername" @click="(isEditUsername = true)" class="fas fa-edit"></i>
@@ -168,6 +169,31 @@ async function update() {
 
 <style scoped>
 .container {
-    background-color: lightcyan;
+    background-color: rgba(224, 255, 255, 0.8);
 }
+.title{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 70px;
+    margin-bottom: 20px;
+ }
+
+ .disabled {
+    cursor: not-allowed;
+ }
+
+ p {
+    text-align: center;
+    font-size: 20px;
+    padding: 0.8em;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    margin-top: 25px;
+    margin-left: 14%;
+    margin-right: 14%;
+    background-color: rgba(224, 255, 255, 0.5);
+    border-radius: 10px;
+ }
 </style>

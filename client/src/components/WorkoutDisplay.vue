@@ -108,7 +108,7 @@
         <h1 class="title" v-if="props.pageType == 'my-workouts'">My Workouts</h1>
         <h1 class="title" v-else>Friend's Workouts</h1>
         <div v-if="(session.loginUserId == 0)">
-            <p>You are not logged in. <RouterLink to="/log-in">Log in</RouterLink> to see your workouts.</p>
+            <p class="msg">You are not logged in. <RouterLink to="/log-in">Log in</RouterLink> to see your workouts.</p>
         </div>
         
         <div class="column" v-else>
@@ -324,20 +324,42 @@
 
 <style scoped>
 .column {
-    background-color: lightcyan;
+    background-color: rgba(224, 255, 255, 0.8);
     width: 60%;
     margin-left: 20%;
 }
 
 .is-loading {
-    background-color: lightcyan;
+    background-color: rgb(224, 255, 255);
     width: 40%;
     padding: 100px;
     margin-left: 30%;
     margin-top: 5%;
 }
-
+ .title{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 70px;
+    margin-bottom: 10px;
+ }
 .red {
     color: red;
 }
+
+.msg{
+    text-align: center;
+    font-size: 20px;
+    padding: 0.8em;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    margin-top: 25px;
+    margin-left: 14%;
+    margin-right: 14%;
+    background-color: rgba(224, 255, 255, 0.5);
+    border-radius: 10px;
+ }
+
+
 </style>

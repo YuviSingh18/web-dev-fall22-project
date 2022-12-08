@@ -22,13 +22,13 @@
             <div class="field">
                 <label class="label">Userame</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="loginEntry.username" placeholder="Username" />
+                    <input class="input is-black" type="text" v-model="loginEntry.username" placeholder="Username" />
                 </div>
             </div>
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input class="input" type="password" v-model="loginEntry.password" placeholder="Password" />
+                    <input class="input is-black" type="password" v-model="loginEntry.password" placeholder="Password" />
                 </div>
             </div>
             <div class="field">
@@ -49,10 +49,19 @@
     .box {
         width: 50%;
         margin: 0 auto;
+        background-color: rgba(224, 255, 255, 0.8);
     }
     .center {
         display: flex;
         justify-content: center;
         padding-top: 10px;
     }
+    .title{
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        margin-top: 70px;
+        margin-bottom: 20px;
+     }
 </style>

@@ -56,7 +56,7 @@
             <div class="field">
                 <label class="label">Picture url</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.picUrl" placeholder="url" required>
+                    <input class="input is-black" type="text" v-model="user.picUrl" placeholder="url" required>
                 </div>
             </div>
             <div class="field">
@@ -73,13 +73,21 @@
     .title {
         text-align: center;
         padding-top: 30px;
-    }
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        margin-top: 70px;
+        margin-bottom: 20px;
+     }
     .box {
         width: 50%;
         margin: 0 auto;
+        background-color: rgba(224, 255, 255, 0.8);
     }
     .center {
         display: flex;
         justify-content: center;
     }
+
 </style>

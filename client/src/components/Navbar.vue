@@ -11,7 +11,7 @@ let isActive = ref(false);
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item">
-            <div class="title logo has-text-white has-background-info p-2">Workouts</div>
+            <div class="logo"><img src="../assets/favicon1.png"/></div>
           </router-link>
       
           <a :class="{ 'is-active': isActive }" @click="isActive = !isActive" role="button" class="navbar-burger">
@@ -59,14 +59,29 @@ let isActive = ref(false);
             <LoginBadge />
           </div>
         </div>
+      
       </nav>
 </template>
 
 
 
 <style scoped>
-    .logo {
-        border: 0px solid black;
-        border-radius: 5px;
+
+
+.logo{
+  margin-top: 8px;
+  margin-left: 8px;
+}
+    .logo img {
+        width: 40px;
+        height: 150%;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
     }
 </style>

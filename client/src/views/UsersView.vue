@@ -72,13 +72,33 @@
 .box {
     width: 70%;
     margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 .table {
     margin-left: auto;
     margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 .title {
     text-align: center;
-    padding-top: 30px;
-}
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 70px;
+    margin-bottom: 10px;
+ }
+
+ p{
+    text-align: center;
+    font-size: 20px;
+    padding: 0.8em;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    margin-top: 25px;
+    margin-left: 14%;
+    margin-right: 14%;
+    background-color: rgba(224, 255, 255, 0.5);
+    border-radius: 10px;
+ }
 </style>
