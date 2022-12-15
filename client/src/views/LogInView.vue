@@ -49,7 +49,10 @@
     .box {
         width: 50%;
         margin: 0 auto;
-        background-color: rgba(224, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     }
     .center {
         display: flex;

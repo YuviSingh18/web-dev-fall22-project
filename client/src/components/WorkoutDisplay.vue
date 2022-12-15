@@ -317,6 +317,7 @@
             </div>
 
         </div>
+        <br>
     </div>
     
 </template>
@@ -324,13 +325,17 @@
 
 <style scoped>
 .column {
-    background-color: rgba(224, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     width: 60%;
     margin-left: 20%;
+    z-index: 5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-bottom: 20px;
 }
 
 .is-loading {
-    background-color: rgb(224, 255, 255);
+    background-color: rgb(0, 0, 0);
     width: 40%;
     padding: 100px;
     margin-left: 30%;
@@ -357,8 +362,9 @@
     margin-top: 25px;
     margin-left: 14%;
     margin-right: 14%;
-    background-color: rgba(224, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
  }
 
 

@@ -26,31 +26,31 @@
             <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.firstName" placeholder="First Name" required>
+                    <input class="input is-black" type="text" v-model="user.firstName" placeholder="First Name" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Last Name</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.lastName" placeholder="Last Name" required>
+                    <input class="input is-black" type="text" v-model="user.lastName" placeholder="Last Name" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.email" placeholder="abc@xyz.com" required>
+                    <input class="input is-black" type="text" v-model="user.email" placeholder="abc@xyz.com" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
-                    <input class="input" type="text" v-model="user.username" placeholder="username" required>
+                    <input class="input is-black" type="text" v-model="user.username" placeholder="username" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control">
-                    <input class="input" type="password" v-model="user.password" placeholder="Password" required>
+                    <input class="input is-black" type="password" v-model="user.password" placeholder="Password" required>
                 </div>
             </div>
             <div class="field">
@@ -65,6 +65,7 @@
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </template>
 
@@ -83,7 +84,10 @@
     .box {
         width: 50%;
         margin: 0 auto;
-        background-color: rgba(224, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
     }
     .center {
         display: flex;
