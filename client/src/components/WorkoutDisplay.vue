@@ -5,6 +5,7 @@
     import { RouterLink } from "vue-router";
     import { type Workout, deleteWorkout, addWorkout, getWorkouts, updateWorkout } from "../stores/workouts";
     import { type User, updateUser } from "../stores/users";
+    import { type City, getCities } from "../stores/cities";
 
     let editWorkout = reactive({} as Workout);
 
@@ -98,6 +99,10 @@
         updateWorkout(workout1);
         editWorkout = {} as Workout;
     }
+
+    const states = reactive([] as City[]);
+    getCities("ne").then( x => states.push(...x));
+
 </script>
 
 <template>
@@ -144,6 +149,18 @@
                                 <label class="label">Location</label>
                                 <div class="control">
                                     <input class="input" type="text" v-model="workout.workoutLocation">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">City</label>
+                                <div class="control">
+                                    <input class="input" type="text" v-model="workout.city">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">City</label>
+                                <div class="control">
+                                    <input class="input" type="text" v-model="workout.state">
                                 </div>
                             </div>
                             <div class="field">
@@ -324,6 +341,10 @@
 
 
 <style scoped>
+.modal-card {
+    margin-top: 5%;
+
+}
 .column {
     background-color: rgba(255, 255, 255, 0.8);
     width: 60%;

@@ -47,4 +47,6 @@ export interface Workout {
     workoutType: string;
     picUrl: string;
     numberOfLikes: number;
+    city: string;
+    state: string;
 }

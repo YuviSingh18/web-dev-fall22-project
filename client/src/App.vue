@@ -16,7 +16,7 @@ import Navbar from './components/Navbar.vue'
 <style>
 
 html{
-  background-image: url("https://wallpaperaccess.com/full/1311968.jpg");
+  background-image: url("assets/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
